@@ -3,7 +3,10 @@
     <div class="number">
         {{ floorNumber }}.
     </div>
-    <custom-button :buttonIsPressed="buttonIsPressed" @elevator-call="$emit('elevator-call', floorNumber)"/>
+    <custom-button 
+      :buttonIsPressed="buttonIsPressed" 
+      @elevator-call="$emit('elevator-call', floorNumber)"
+    />
   </div>
 </template>
 
@@ -30,18 +33,17 @@ export default {
 
 <style scoped>
 .floor {
-    position: relative;
-    height: 100px;
-    width: 100%;
-    border-bottom: 1px solid #bbbbbb;
+  position: relative;
+  height: 100px;
+  width: 100%;
+  border-bottom: 1px solid #bbbbbb;
 }
 
 .number {
-    position: absolute;
-    bottom: 50%;
-    transform: translateY(50%);
-    left: 28px;
-    font-weight: 600;
+  position: absolute;
+  bottom: 50%;
+  transform: translateY(50%);
+  left: 28px;
+  font-weight: 600;
 }
-
 </style>

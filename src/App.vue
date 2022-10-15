@@ -12,7 +12,8 @@ export default {
   data() {
     return {
       settingsForApplication: {
-        numberOfFloors: 6
+        numberOfFloors: 6,
+        numberOfElevatorShaft: 1
       }
     }
   },
@@ -26,5 +27,4 @@ export default {
 * {
   box-sizing: border-box;
 }
-
 </style>

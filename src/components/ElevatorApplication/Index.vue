@@ -1,6 +1,10 @@
 <template>
   <div class="wrapper">
-    <elevator-shaft :settingsForPanelElevator="settingsForPanelElevator"/>
+    <elevator-shaft 
+      :settingsForPanelElevator="settingsForPanelElevator"
+      v-for="index in settingsForApplication.numberOfElevatorShaft" 
+      :key="index"
+    />
 
     <div class="floors">
       <app-floor 
@@ -93,25 +97,22 @@ export default {
      if (this.callStack.length != 0) {
         let firstFloorInCallStack = this.callStack[0]
         let floorDifference = firstFloorInCallStack - this.floorNumberWithElevator
+
         floorDifference > 0 ? this.goElevator(firstFloorInCallStack, floorDifference ,'top') : this.goElevator(firstFloorInCallStack, floorDifference ,'down')
         this.floorNumberWithElevator = firstFloorInCallStack
-
         setTimeout(this.relaxAnimation, Math.abs(floorDifference)*1000)
-        
-        let timeout = Math.abs(floorDifference)*1000 + 3000
         setTimeout(() => {  
           this.callStack.shift();
-          this.settingsForPanelElevator.show = false
-        }, timeout)
-        setTimeout(() => {  this.processingCallStack() }, timeout)
+          this.settingsForPanelElevator.show = false;
+          this.processingCallStack();
+        }, Math.abs(floorDifference)*1000 + 3000)
      }
     },
-    goElevator(numberFloor, numberOfFloors, orientation) {
+    goElevator(floorNumber, numberOfFloors, orientation) {
       this.settingsForPanelElevator = {
           show: true,
-          floorNumber: numberFloor,
+          floorNumber,
           orientation
-      
       }
 
       let elevator = document.querySelector('.elevator')
@@ -119,9 +120,7 @@ export default {
       if (orientation === 'top') {
         elevator.style.transition = `${numberOfFloors}s`
         elevator.style.transform = `translateY(calc(-${this.floorNumberWithElevator-1}00% - ${Math.abs(numberOfFloors)}00%))`
-      } 
-      
-      if (orientation === 'down') {
+      } else {
         elevator.style.transition = `${Math.abs(numberOfFloors)}s`
         elevator.style.transform = `translateY(calc(-${this.floorNumberWithElevator-1}00% + ${Math.abs(numberOfFloors)}00%))`
       }
@@ -139,7 +138,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .wrapper {
   display: flex;
   padding: 8px;
@@ -147,10 +146,10 @@ export default {
   height: fit-content;
   border: 2px solid #212121;
   margin: 0 auto;
-}
 
-.floors {
-  height: 100%;
-  width: 100%;
+  & .floors {
+    height: 100%;
+    width: 100%;
+  }
 }
 </style>

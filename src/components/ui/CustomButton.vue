@@ -19,35 +19,35 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .wrapper-button {
-    position: absolute;
-    bottom: 50%;
-    transform: translateY(50%);
-    left: 52px;
-    padding: 4px;
-    opacity: 1;
-}
+  position: absolute;
+  bottom: 50%;
+  transform: translateY(50%);
+  left: 52px;
+  padding: 4px;
+  opacity: 1;
 
-.wrapper-button:hover {
+  &:hover {
     opacity: 0.7;
     cursor: pointer;
-}
+    
+    & button {
+      cursor: pointer;
+    }
+  }
 
-.wrapper-button:hover button {
-    cursor: pointer;
-}
-
-button {
+  & button {
     width: 16px;
     height: 16px;
     background-color: #38be34;
     border: 1px solid #1a4619;
     opacity: 1;
-}
 
-.pressed-color {
-    background-color: #d6c312; 
+    &.pressed-color {
+        background-color: #d6c312; 
+    }
+  }
 }
 
 .indication-animation {
