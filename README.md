@@ -1,24 +1,6 @@
 # app-elevator
 
-## Project setup
-```
-npm install
-```
+## Приложение "Эмулятр лифта"
+Функцинал: анимация движения и отдыха на этаже, движение по стэку вызoзoвов, сохранение состояния в локальном хранилище, индикация кнопок, возможноость регулировки количества этажей.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![image](https://user-images.githubusercontent.com/107515334/196046731-7fd22f78-8392-4094-a208-ca082feaa37d.png)
